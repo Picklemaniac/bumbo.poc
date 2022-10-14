@@ -1,6 +1,6 @@
 namespace bumbo.poc.data.Models;
 
-public sealed class PrognoseNorm
+public sealed class PrognosisNorm
 {
     public int Id { get; set; }
     public decimal TimeUnloadPackages { get; set; }
