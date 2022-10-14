@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bumbo.poc.web", "bumbo.poc.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bumbo.poc.data", "bumbo.poc.data\bumbo.poc.data.csproj", "{AF63E5E6-DC72-4A2D-B68E-1105D4E4A773}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bumbo.poc.business", "bumbo.poc.business\bumbo.poc.business.csproj", "{ACC6198E-9893-4679-ABBE-43DE0D8A1B63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AF63E5E6-DC72-4A2D-B68E-1105D4E4A773}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF63E5E6-DC72-4A2D-B68E-1105D4E4A773}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF63E5E6-DC72-4A2D-B68E-1105D4E4A773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACC6198E-9893-4679-ABBE-43DE0D8A1B63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACC6198E-9893-4679-ABBE-43DE0D8A1B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACC6198E-9893-4679-ABBE-43DE0D8A1B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACC6198E-9893-4679-ABBE-43DE0D8A1B63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
