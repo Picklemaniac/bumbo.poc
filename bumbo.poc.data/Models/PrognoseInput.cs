@@ -1,6 +1,6 @@
 namespace bumbo.poc.data.Models;
 
-public sealed class PrognoseInput
+public sealed class PrognosisInput
 {
     public int Id { get; set; }
     public DateOnly Date { get; set; }
