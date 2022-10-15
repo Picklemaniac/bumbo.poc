@@ -1,3 +1,5 @@
+using bumbo.poc.data.Repositories;
+
 namespace bumbo.poc.web
 {
     public class Program
