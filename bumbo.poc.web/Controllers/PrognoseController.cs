@@ -48,27 +48,25 @@ namespace bumbo.poc.web.Controllers
 
             if (ModelState.IsValid)
             {
-                for (int i = 0; i < viewModel.ExpectedCustomers.Count; i++)
+                for (int i = 0; i < viewModel.ExpectedCustomers?.Count; i++)
                 {
                     DateTime date = ISOWeek.ToDateTime(year, week, DayOfWeek.Monday).AddDays(i);
                     int numberOfCustomers = viewModel.ExpectedCustomers[i];
-                    
-                    //Als er nog geen prognose is voor deze DateTime, maak een nieuwe aan
 
-                    //Anders updaten
+                    //Als er nog geen prognose input is voor deze DateTime, maak een nieuwe aan
+
+                    //Anders updaten 
                 }
 
-                for (int i = 0; i < viewModel.ExpectedPackages.Count; i++)
+                for (int i = 0; i < viewModel.ExpectedPackages?.Count; i++)
                 {
                     DateTime date = ISOWeek.ToDateTime(year, week, DayOfWeek.Monday).AddDays(i);
                     int numberOfCustomers = viewModel.ExpectedPackages[i];
-                    //Als er nog geen prognose is voor deze DateTime, maak een nieuwe aan
+                    //Als er nog geen prognose input is voor deze DateTime, maak een nieuwe aan
 
                     //Anders updaten
                 }
             }
-
-
 
             return View(viewModel);
         }

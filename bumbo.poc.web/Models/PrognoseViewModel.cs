@@ -17,7 +17,7 @@ namespace bumbo.poc.web.Models
         //Relatief? Beetje beun
         public int DaysInWeek = 7;
         public DateTime FirstDayOfWeek { get; set; }
-        public List<int> ExpectedPackages { get; set; }
-        public List<int> ExpectedCustomers { get; set; }
+        public List<int>? ExpectedPackages { get; set; }
+        public List<int>? ExpectedCustomers { get; set; }
     }
 }
