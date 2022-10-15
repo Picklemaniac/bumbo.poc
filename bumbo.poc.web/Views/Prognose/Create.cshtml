@@ -1,0 +1,65 @@
+﻿@using System.Globalization
+@model PrognoseViewModel
+
+@{
+    ViewData["Title"] = "Prognose Week Maken / Bewerken";
+}
+
+
+
+<div class="container">
+    <div>
+        <div>
+            <a asp-action="Create" asp-route-year="@ISOWeek.ToDateTime(Model.year, Model.week, DayOfWeek.Monday).AddDays(-7).Year" asp-route-week="@ISOWeek.GetWeekOfYear(ISOWeek.ToDateTime(Model.year, Model.week, DayOfWeek.Monday).AddDays(-7))" asp class="btn btn-secondary"> Vorige Week </a>
+            <span>Prognose week: @ISOWeek.GetWeekOfYear(Model.FirstDayOfWeek) van jaar: @ISOWeek.GetYear(Model.FirstDayOfWeek) </span>
+            <a asp-action="Create" asp-route-year="@ISOWeek.ToDateTime(Model.year, Model.week, DayOfWeek.Monday).AddDays(7).Year" asp-route-week="@ISOWeek.GetWeekOfYear(ISOWeek.ToDateTime(Model.year, Model.week, DayOfWeek.Monday).AddDays(7))" asp class="btn btn-secondary"> Volgende Week </a>
+        </div>
+        <div>
+            <span>Deze week is vanaf: @Model.FirstDayOfWeek.ToString("yyy-MM-dd")</span>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div>
+        <form asp-action="Create" asp-route-year="@Model.year" asp-route-week="@Model.week">
+            <input type="submit" value="Opslaan" />
+            <table class="table">
+                <thead>
+                    <th scope="col">#</th>
+
+                    @for (int i = 0; i < Model.DaysInWeek; i++)
+                    {
+                        <th scope="col">
+                            @Model.FirstDayOfWeek.AddDays(i).ToString("dddd") | 
+                            @Model.FirstDayOfWeek.AddDays(i).ToString("MM-dd")
+                        </th>
+                    }
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Aantal Coli's</th>
+
+                        @for (int i = 0; i < Model.DaysInWeek; i++)
+                        {
+                            <th class="col-sm-2">
+                                <input asp-for="ExpectedPackages" class="form-control" type="number" placeholder="0" />
+                            </th>
+                        }
+                    </tr>
+                    <tr>
+                        <th scope="row">Aantal Klanten</th>
+                        @for (int i = 0; i < Model.DaysInWeek; i++)
+                        {
+                            <th class="col-sm-2">
+                                <input asp-for="ExpectedCustomers" class="form-control" type="number" placeholder="0" />
+                           </th>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
