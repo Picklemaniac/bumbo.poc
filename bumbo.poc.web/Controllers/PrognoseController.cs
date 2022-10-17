@@ -41,7 +41,7 @@ namespace bumbo.poc.web.Controllers
             return View(prognoseViewModel);
         }
 
-        [HttpPost("Prognose/{year}/{week}")]
+        [HttpPost("Prognose/{year:int}/{week:int}")]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("ExpectedPackages", "ExpectedCustomers")] [FromRoute] int year, [FromRoute] int week, PrognoseViewModel viewModel)
         {

@@ -10,4 +10,13 @@ public class Database
     public DbSet<ScheduleItem> ScheduleItems { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<WorkedTime> WorkedTimes { get; set; }
+
+    public Database()
+    {
+        ScheduleItems.Add(new ScheduleItem()
+        {
+            StartTime = DateTime.Today,
+            EndTime = DateTime.Now
+        });
+    }
 }

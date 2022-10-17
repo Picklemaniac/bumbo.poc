@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\bumbo.poc.data\bumbo.poc.data.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,3 +1,4 @@
+using bumbo.poc.data.Extensions;
 using bumbo.poc.data.Models;
 
 namespace bumbo.poc.data.Repositories;
@@ -15,34 +16,35 @@ public sealed class PrognosisRepository
 
     public IEnumerable<PrognosisInput> GetPrognosisInputsForCurrentWeek()
     {
-        var firstDayOfCurrentWeek = GetFirstDayOfWeekByDate(DateOnly.FromDateTime(DateTime.Now));
+        var firstDayOfCurrentWeek = DateOnly.FromDateTime(DateTime.Now).GetFirstDayOfWeekByDate();
 
         return _database.PrognosisInputs.Where(i =>
-            i.Date >= firstDayOfCurrentWeek && i.Date < firstDayOfCurrentWeek.AddDays(7));
+            i.Date >= firstDayOfCurrentWeek && i.Date < firstDayOfCurrentWeek.GetLastDayOfWeekByDate());
     }
 
     public IEnumerable<Prognosis> GetPrognosesForCurrentWeek()
     {
-        var firstDayOfCurrentWeek = GetFirstDayOfWeekByDate(DateOnly.FromDateTime(DateTime.Now));
+        return GetPrognosesByWeek(DateOnly.FromDateTime(DateTime.Now));
+    }
+
+    public IEnumerable<Prognosis> GetPrognosesByWeek(DateOnly dayInWeek)
+    {
+        var firstDayOfCurrentWeek = dayInWeek.GetFirstDayOfWeekByDate();
         return _database.Prognoses.Where(p => p.Date >= firstDayOfCurrentWeek && p.Date < firstDayOfCurrentWeek.AddDays(7));
     }
 
     private Prognosis? GetPrognosisByDate(DateOnly dateOnly)
-    {
+{
         return _database.Prognoses.FirstOrDefault(p => p.Date == dateOnly);
-    }
-
-    private static DateOnly GetFirstDayOfWeekByDate(DateOnly date)
-    {
-        while (date.DayOfWeek != DayOfWeek.Sunday)
-        {
-            date = date.AddDays(-1);
-        }
-        return date;
     }
 
     public double PrognosisCoveredByDayPercentage(DateOnly dateOnly)
     {
         return decimal.ToDouble(GetPrognosisByDate(dateOnly).WorkHours) / _scheduleItemsRepository.GetPlannedWorkHoursByDate(dateOnly)*100;
+    }
+
+    public double PrognosisCoveredByWeekPercentage(DateOnly dateOnly)
+    {
+        return decimal.ToDouble(GetPrognosesByWeek(dateOnly).Sum(p => p.WorkHours)) / _scheduleItemsRepository.GetPlannedWorkHoursByWeek(dateOnly)*100;
     }
 }
