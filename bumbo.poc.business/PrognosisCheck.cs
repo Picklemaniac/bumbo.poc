@@ -21,7 +21,7 @@ public sealed class PrognosisCheck
             .Where(s => DateOnly.FromDateTime(s.StartTime).Day == dateOnly.Day).ToList();
 
         var hoursNotCovered = new ArrayList();
-        for (var i = OpeningTimes.OPENINGTIME; i <= OpeningTimes.CLOSINGTIME; i.AddHours(1))
+        for (var i = OpeningTimes.OPENINGTIME; i <= OpeningTimes.CLOSINGTIME; i.AddMinutes(15))
         {
             if (scheduleItems.Find(s => TimeOnly.FromDateTime(s.StartTime) <= i && TimeOnly.FromDateTime(s.EndTime) >= i) is null)
             {
