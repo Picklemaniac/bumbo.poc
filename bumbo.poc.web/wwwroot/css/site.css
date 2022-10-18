@@ -16,3 +16,33 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+td {
+    border: 1px solid lightgray;
+    width: 20px;
+    height: 20px;
+}
+
+td[data-row]:nth-child(6n + 1) {
+    border-right: 2px solid black;
+}
+
+td[data-row]:nth-child(2) {
+    border-left: 2px solid black;
+}
+
+.selected {
+    background-color: red;
+}
+
+.booked {
+    background-color: darkgrey;
+}
+
+th {
+    text-align: left;
+}
+
+.name {
+    width: 150px;
+}
